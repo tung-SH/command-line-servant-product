@@ -1,6 +1,7 @@
 #include <iostream>
-#include "lib/type_writing_effect.h"
 #include "lib/argh.h"
+#include "lib/collatz_number.h"
+
 using namespace std;
 
 
@@ -11,8 +12,8 @@ char d[] = "(^_^)";
 
 char e[] = "Hello Tung! ";
 char f[] = "What can I do for you? (_ _)\n"; 
-char g[] = "1 - \n";
-char h[] = "2 - \n"; 
+char g[] = "1 - Show the process of a collatz number\n";
+char h[] = "2 - Show the first type writing program\n"; 
 
 
 
@@ -43,6 +44,14 @@ int main(int, char* argv[]) {
         wait_1ms(100);
     }
     
+
+    if (cmdl[{"--1"}]) {
+        collatz_num_io();
+    }
+
+    if (cmdl[{"--2"}]) {
+        type_writing_hello();
+    }
 
     return 0; 
 }
