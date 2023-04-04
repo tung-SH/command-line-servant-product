@@ -1,57 +1,44 @@
-#include <iostream>
 #include "lib/argh.h"
-#include "lib/collatz_number.h"
+#include "lib/type_writing_effect.cpp"
+#include "lib/calculator.cpp"
 
 using namespace std;
-
-
-char a[] = "Hello Tung! ";
-char b[] = "I am your faithful servant! \n";
-char c[] = "My name is Rim! ";
-char d[] = "(^_^)";
-
-char e[] = "Hello Tung! ";
-char f[] = "What can I do for you? (_ _)\n"; 
-char g[] = "1 - Show the process of a collatz number\n";
-char h[] = "2 - Show the first type writing program\n"; 
-
 
 
 int main(int, char* argv[]) {
     argh::parser cmdl(argv);
 
-    // 1. say hello to user
+    // 1. say hello to user and introduce itself
     if (cmdl[{"-h", "--helloRim"}]) {
-        type_writing(a, 200); 
-        wait_1ms(1000);
-        type_writing(b, 125);
-        wait_1ms(1000);
-        type_writing(c, 200);
-        wait_1ms(400);
-        type_writing(d, 0);
-        wait_1ms(400); 
+        char a[] = "Hello User! \n"; 
+        print_type_writing(a, 1, 3); 
+
+        char b[] = "My name is RIM. "; 
+        print_type_writing(b, 2, 2); 
+
+        char c[] = "And I am your faithful servant! ";
+        print_type_writing(c, 1, 4);
+
+        cout << "(^_-)\n";  
+
+        char d[] = "Type \"-s\" to know what I can do for you, Sir!";
+        print_type_writing(d, 1, 4); 
     }
 
-    // 2. what can i do for you? 
+    // 2. Enumerate what can RIM do for user
     if (cmdl[{"-s", "--serve"}]) {
-        type_writing(e, 100); 
-        wait_1ms(100);
-        type_writing(f, 100); 
-        wait_1ms(100);
-        type_writing(g, 100); 
-        wait_1ms(100);
-        type_writing(h, 100); 
-        wait_1ms(100);
+        char a[] = "What I can do for you? (_ _)!\n";
+        char b[] = "1. Help me with the simple calculations"; 
+        print_type_writing(a, 1, 4); 
+        print_type_writing(b, 1, 4); 
     }
-    
 
+    // 3. Help user with simple calculation
     if (cmdl[{"--1"}]) {
-        collatz_num_io();
+        calculator(); 
     }
 
-    if (cmdl[{"--2"}]) {
-        type_writing_hello();
-    }
+
 
     return 0; 
 }
